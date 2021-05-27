@@ -34,8 +34,6 @@ namespace chatBot
             }
         }
 
-        public ObservableCollection<string> Message { get; set; }
-
         public User(long id, string name)
         {
             this.id = id;
@@ -43,6 +41,9 @@ namespace chatBot
             Message = new ObservableCollection<string>();
         }
 
+
+        public ObservableCollection<string> Message { get; set; }
+                
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool Equals(User u) => u.id == this.id;

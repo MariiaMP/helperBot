@@ -25,12 +25,10 @@ namespace chatBot
 
             bot.OnMessage += BotOnMessageReceiving;
             bot.OnMessage += delegate (object sender, Telegram.Bot.Args.MessageEventArgs e)
-             {
+            {
                  string msg = $"{DateTime.Now} : {e.Message.Chat.FirstName} {e.Message.Chat.Id} {e.Message.Text}";
                  File.AppendAllText("data.log", $"{msg}\n");
-
-                 Debug.WriteLine(msg);
-
+                
                  this.Dispatcher.Invoke(() =>
                  {
                      var person = new User(e.Message.Chat.Id, e.Message.Chat.FirstName);

@@ -56,7 +56,7 @@ namespace chatBot
                     }
                     else if (dish == "Fish" && calories == "Don't worry about it")
                     {
-                        cmd = new NpgsqlCommand($@"select * from fish_dish where id = random() * (select count (*) from fish_dish) + 1)::int", conn);
+                        cmd = new NpgsqlCommand($@"select * from fish_dish where id=(SELECT floor(random() * (select count (*) from fish_dish) + 1)::int);", conn);
                     }
                 }
                 {
@@ -78,7 +78,7 @@ namespace chatBot
                     }
                     else if (dish == "Vegetable dish" && calories == "Don't worry about it")
                     {
-                        cmd = new NpgsqlCommand($@"select * from vegetable_dish where id = random() * (select count (*) from fish_dish) + 1)::int", conn);
+                        cmd = new NpgsqlCommand($@"select * from vegetable_dish where id=(SELECT floor(random() * (select count (*) from vegetable_dish) + 1)::int);", conn);
                     }
                 }
                 {
@@ -100,7 +100,7 @@ namespace chatBot
                     }
                     else if (dish == "Snack" && calories == "Don't worry about it")
                     {
-                        cmd = new NpgsqlCommand($@"select * from snack_dish where id = random() * (select count (*) from fish_dish) + 1)::int", conn);
+                        cmd = new NpgsqlCommand($@"select * from snack_dish where id=(SELECT floor(random() * (select count (*) from snack_dish) + 1)::int);", conn);
                     }
                 }
                 {
@@ -122,7 +122,7 @@ namespace chatBot
                     }
                     else if (dish == "Dessert" && calories == "Don't worry about it")
                     {
-                        cmd = new NpgsqlCommand($@"select * from dessert_dish where id = random() * (select count (*) from fish_dish) + 1)::int", conn);
+                        cmd = new NpgsqlCommand($@"select * from dessert_dish where id=(SELECT floor(random() * (select count (*) from dessert_dish) + 1)::int);", conn);
                     }
                 }
 
